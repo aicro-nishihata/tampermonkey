@@ -11,7 +11,9 @@ document.addEventListener("keydown", EnterHandler, { capture: true });
 
 function EnterHandler(event) {
     if (event.code === "Enter" && !event.metaKey &&
-        !(event.isComposing || event.key === 'Process' || event.keyCode === 229)) { // IME入力中はこのループに入らないようにした
+        !(event.isComposing || event.key === 'Process' || event.keyCode === 229)) {
+        // IME入力中はこのループに入らないようにした
+        // https://qiita.com/alt_yamamoto/items/8663d047a3794dd5605e
         // 入力エリアを限定したかったがidがランダムなので諦めた
         event.preventDefault(); // デフォルトの動作をキャンセル
         event.stopPropagation(); // 他のリスナーへの伝播を停止
