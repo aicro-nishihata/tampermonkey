@@ -10,7 +10,8 @@
 document.addEventListener("keydown", EnterHandler, { capture: true });
 
 function EnterHandler(event) {
-    if (event.code === "Enter" && !event.metaKey) {
+    if (event.code === "Enter" && !event.metaKey &&
+        !(event.isComposing || event.key === 'Process' || event.keyCode === 229)) { // IME入力中はこのループに入らないようにした
         // 入力エリアを限定したかったがidがランダムなので諦めた
         event.preventDefault(); // デフォルトの動作をキャンセル
         event.stopPropagation(); // 他のリスナーへの伝播を停止
